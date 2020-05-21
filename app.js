@@ -23,23 +23,25 @@ let store = {
 };
 
 store.pushIntoArr();
-
 let elementList = document.getElementById('list');
-let locationOfStore = document.createElement('li');
-locationOfStore.textContent = store.location;
-elementList.appendChild(locationOfStore);
-for (let i = 0; i < store.kukiesHourlyArr.length; i++) {
-  console.log('dlugość: ' + store.kukiesHourlyArr.length);
-  if (i <= 6 ) {
-    let newListItem = document.createElement('li');
-    newListItem.textContent = (i+6) + ' am ' + store.kukiesHourlyArr[i] + ' cookies';
-    elementList.appendChild(newListItem);
-  } else {
-    let newListItem = document.createElement('li');
-    newListItem.textContent = (i-6) + '  pm ' + store.kukiesHourlyArr[i] + ' cookies';
-    elementList.appendChild(newListItem);
+
+function createListOfSalePredictions(store){ 
+  let locationOfStore = document.createElement('li');
+  locationOfStore.textContent = store.location;
+  elementList.appendChild(locationOfStore);
+  for (let i = 0; i < store.kukiesHourlyArr.length; i++) {
+    console.log('dlugość: ' + store.kukiesHourlyArr.length);
+    if (i <= 6 ) {
+      let newListItem = document.createElement('li');
+      newListItem.textContent = (i+6) + ' am ' + store.kukiesHourlyArr[i] + ' cookies';
+      elementList.appendChild(newListItem);
+    } else {
+      let newListItem = document.createElement('li');
+      newListItem.textContent = (i-6) + '  pm ' + store.kukiesHourlyArr[i] + ' cookies';
+      elementList.appendChild(newListItem);
+    }
   }
-}
+}  
 
 function calculateCookiesTotal(arr){
   let total = 0;
@@ -55,37 +57,12 @@ function createListItemForCookiesTotal(num) {
   elementList.appendChild(cookiesTotal); 
 }
 
-
+createListOfSalePredictions(store);
 createListItemForCookiesTotal(calculateCookiesTotal(store.kukiesHourlyArr));
 
 
-// store.pushIntoArr();
 
 
-// var john = {
-//   name: 'John Cokos',
-//   pets: ['Rosie', 'Luna'],
-// };
-
-
-
-// Find the UL
-// var elementList = document.getElementById('list');
-
-
-
-// // For john.children.length
-// for (var i = 0; i < john.pets.length; i++) {
-
-//   // Create an LI
-//   // var newListItem = document.createElement('li');
-
-//   // Set the textContent to the name of the child
-//   newListItem.textContent = john.pets[i];
-
-//   // Append LI as a Child to UL
-//   elementList.appendChild(newListItem);
-// }
 
 
 
