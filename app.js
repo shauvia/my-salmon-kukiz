@@ -94,11 +94,11 @@ function createTableHeader(store){
     }
   }
   tHrData = document.createElement('th');
-  tHrData.textContent = 'Total cookies per store';
+  tHrData.textContent = 'Daily location total';
   tHRow.appendChild(tHrData);
 }
 
-function createTableBody(store){
+function createOneStoreRow(store){
   let sum = 0;
   let tBRow = document.createElement('tr');
   saleTable.appendChild(tBRow);
@@ -116,8 +116,35 @@ function createTableBody(store){
   tBRow.appendChild(tBrTotal);
 }
 
-createTableHeader(arrayOfStores[0]);
-createTableBody(arrayOfStores[0]);
+function calculateOneHourTotal(arr, index){
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i].kukiesHourlyArr[index];
+  }
+  return sum;
+}
+
+console.log('ciastka: ' + calculateOneHourTotal(arrayOfStores, 0));
+
+function calculateEveryHourTotal(arr) {
+  let lista = [];
+  for (let i = 0; i < arr[0].kukiesHourlyArr.length; i++){
+    lista.push(calculateOneHourTotal(arr, i));
+  }
+  return lista;
+}
+
+// jeszcze musze calculateEveryHourTotal wyświetlić;
+
+console.log('lista: ' + calculateEveryHourTotal(arrayOfStores));
+
+createTableHeader(arrayOfStores[0]); // to nie powinien być store, header powinien być niezależny od stora;
+createOneStoreRow(arrayOfStores[0]);
+createOneStoreRow(arrayOfStores[1]);
+createOneStoreRow(arrayOfStores[2]);
+createOneStoreRow(arrayOfStores[3]);
+createOneStoreRow(arrayOfStores[4]);
+console.log('pierwszy sklep' + arrayOfStores[0].kukiesHourlyArr[0]);
 
 
 
