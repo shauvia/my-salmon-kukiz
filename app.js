@@ -67,13 +67,6 @@ console.log(arrayOfStores);
 // let elementList = document.getElementById('list'); 
 
 let saleTable = document.getElementById('table');
-// let tHRow = document.createElement('tr');
-// saleTable.appendChild(tHRow);
-// for (let i = 0; i < 15; i++) {
-//   let tHrData = document.createElement('th');
-//   tHrData.textContent = (i+6) + ' am';
-//   tHRow.appendChild(tHrData);
-// }
 
 
 function createTableHeader(store){ 
@@ -124,6 +117,8 @@ function calculateOneHourTotal(arr, index){
   return sum;
 }
 
+
+
 console.log('ciastka: ' + calculateOneHourTotal(arrayOfStores, 0));
 
 function calculateEveryHourTotal(arr) {
@@ -134,9 +129,34 @@ function calculateEveryHourTotal(arr) {
   return lista;
 }
 
-// jeszcze musze calculateEveryHourTotal wyświetlić;
+function calculateAllHoursTotal(arr){
+  let sum = 0;
+  for(let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
 
-console.log('lista: ' + calculateEveryHourTotal(arrayOfStores));
+function renderEveryHourTotal(arr){
+  let arrOfTotals = calculateEveryHourTotal(arr);
+  let sum = calculateAllHoursTotal(arrOfTotals);
+  let tBFooter = document.createElement('tr');
+  saleTable.appendChild(tBFooter);
+  let tBfootPusty = document.createElement('td');
+  tBfootPusty.textContent = 'pusty';
+  tBFooter.appendChild(tBfootPusty);
+  for (let i = 0; i < arrOfTotals.length; i++){
+    let tBfootData = document.createElement('td');
+    tBfootData.textContent = arrOfTotals[i];
+    tBFooter.appendChild(tBfootData);
+  }
+  let tBfootSum = document.createElement('td');
+  tBfootSum.textContent = sum;
+  tBFooter.appendChild(tBfootSum);
+}
+
+
+
 
 createTableHeader(arrayOfStores[0]); // to nie powinien być store, header powinien być niezależny od stora;
 createOneStoreRow(arrayOfStores[0]);
@@ -144,7 +164,8 @@ createOneStoreRow(arrayOfStores[1]);
 createOneStoreRow(arrayOfStores[2]);
 createOneStoreRow(arrayOfStores[3]);
 createOneStoreRow(arrayOfStores[4]);
-console.log('pierwszy sklep' + arrayOfStores[0].kukiesHourlyArr[0]);
+renderEveryHourTotal(arrayOfStores);
+
 
 
 
