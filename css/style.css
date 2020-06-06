@@ -1,0 +1,124 @@
+body {
+  width: auto;
+  background-color: rgba(255, 233, 193, 0.712);
+  font-family: 'Belleza', sans-serif;
+  color: rgb(155, 90, 6);
+}
+
+figure img {
+  width: 100%;
+}
+
+a:link {
+  text-decoration: none;
+  color: rgb(61, 37, 6);
+}
+
+a:visited {
+  text-decoration: none;
+  color: rgb(61, 37, 6);
+}
+
+#logo {
+  /* outline: 1px dashed rgb(226, 25, 159); */
+  text-align: center;
+  margin: 3vh 0 8vh 0;
+}
+
+h1 {
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 5em;
+  display: inline-block;
+}
+
+header img {
+  /* outline: 1px dashed rgb(31, 156, 150); */
+  display: inline-block;
+}
+
+nav > ul {
+  background-color: rgb(255, 220, 172);
+  color: rgb(117, 69, 6);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 15vh;
+}
+
+nav li {
+  /* outline: 1px dashed blue; */
+  padding: 1em 0 1em 0;
+  margin: 0 2em 0 2em;
+  font-size: 1.5em;
+}
+
+.locations-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 5vh auto 15vh auto;
+}
+
+.locations-flex figure {
+  /* outline: 1px dashed blue; */
+  position: relative;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
+}
+
+.locations-flex h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.6em;
+  border: 1px solid black;
+  font-size: 1.3em;
+  padding: 0.3em;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10vh;
+  font-size: 3em;
+}
+
+.store-flex {
+  /* outline: 1px dashed red; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 90%;
+  margin: 5vh auto 5vh auto;
+}
+
+.store-flex figure {
+  position: relative;
+}
+
+.store-flex h3 {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.3em;
+}
+
+footer address {
+  border-top: 1px solid rgb(153, 117, 51);
+  width: 15em;
+  margin: 10em auto 2em auto;
+  padding-top: 1.5em;
+  text-align: center;
+  line-height: 1.3em;
+  font-size: 1.2em;
+}
+
+footer > p {
+  border-top: 1px solid rgb(145, 142, 0);
+  width: 4.5em;
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  margin-left: 1em;
+}
