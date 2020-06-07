@@ -73,7 +73,7 @@ function createTableHeader(store){
   let tHRow = document.createElement('tr');
   saleTable.appendChild(tHRow);
   let tHrData = document.createElement('th');
-  tHrData.textContent = 'pusty';
+  tHrData.textContent = '';
   tHRow.appendChild(tHrData);
   for (let i = 0; i < store.kukiesHourlyArr.length; i++) {
     if (i <= 6 ) {
@@ -143,7 +143,7 @@ function renderEveryHourTotal(arr){
   let tBFooter = document.createElement('tr');
   saleTable.appendChild(tBFooter);
   let tBfootPusty = document.createElement('td');
-  tBfootPusty.textContent = 'pusty';
+  tBfootPusty.textContent = 'Hourly total';
   tBFooter.appendChild(tBfootPusty);
   for (let i = 0; i < arrOfTotals.length; i++){
     let tBfootData = document.createElement('td');
