@@ -28,10 +28,9 @@ function Store(adress, minCust, maxCust, avgCookies) {
   this.location = adress;
   this.minCustomer = minCust;
   this.maxCustomer = maxCust;
-  this.avgCookiePerCust =  avgCookies;
-  this.kukiesHourlyArr =  [];
+  this.avgCookiePerCust = avgCookies;
+  this.kukiesHourlyArr = [];
   this.pushIntoArr();
-
 }
 
 Store.prototype.randomClientNum = function() {
@@ -42,7 +41,7 @@ Store.prototype.kukiesPerHour = function() {
   console.log(randomNum);
   return randomNum * Math.floor(this.avgCookiePerCust);
 },
-Store.prototype.pushIntoArr =  function() {
+Store.prototype.pushIntoArr = function() {
   let n = 1;
   while (n <= 15) {
     let kukiesOnHour = this.kukiesPerHour();
@@ -57,7 +56,7 @@ arrayOfStores.push(new Store('1st & Pike', 23, 65, 6.3));
 arrayOfStores.push(new Store('SeaTacAirport', 3, 24, 1.2)); 
 arrayOfStores.push(new Store('Seattle Center', 11, 38, 3.7));
 arrayOfStores.push(new Store('Capitol Hill', 20, 38, 2.3));
-arrayOfStores.push(new Store('Alki', 2, 16, 4.6)); 
+arrayOfStores.push(new Store('Alki', 2, 16, 4.6));
 
 console.log(arrayOfStores);
 
@@ -117,8 +116,6 @@ function calculateOneHourTotal(arr, index){
   return sum;
 }
 
-
-
 console.log('ciastka: ' + calculateOneHourTotal(arrayOfStores, 0));
 
 function calculateEveryHourTotal(arr) {
@@ -166,6 +163,8 @@ createOneStoreRow(arrayOfStores[3]);
 createOneStoreRow(arrayOfStores[4]);
 renderEveryHourTotal(arrayOfStores);
 
+
+addEventListener('submit')
 
 
 
