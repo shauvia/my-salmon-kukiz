@@ -62,7 +62,6 @@ console.log(arrayOfStores);
 
 
 
-
 // let elementList = document.getElementById('list'); 
 
 let saleTable = document.getElementById('table');
@@ -137,7 +136,8 @@ function calculateAllHoursTotal(arr){
 function renderEveryHourTotal(arr){
   let arrOfTotals = calculateEveryHourTotal(arr);
   let sum = calculateAllHoursTotal(arrOfTotals);
-  let tBFooter = document.createElement('tr');
+  let tBFooter = document.createElement('tr')
+  tBFooter.setAttribute('id','totals');
   saleTable.appendChild(tBFooter);
   let tBfootPusty = document.createElement('td');
   tBfootPusty.textContent = 'Hourly total';
@@ -152,20 +152,39 @@ function renderEveryHourTotal(arr){
   tBFooter.appendChild(tBfootSum);
 }
 
-
-
-
 createTableHeader(arrayOfStores[0]); // to nie powinien być store, header powinien być niezależny od stora;
 createOneStoreRow(arrayOfStores[0]);
 createOneStoreRow(arrayOfStores[1]);
 createOneStoreRow(arrayOfStores[2]);
 createOneStoreRow(arrayOfStores[3]);
 createOneStoreRow(arrayOfStores[4]);
+
+
+function removeHourlyTotalRow(){
+
+}
+
+let form = document.getElementById('formul');
+function formData(event){
+  event.preventDefault();
+
+  let storeLocation = event.target.address.value;
+  let min = parseInt(event.target.min.value);
+  let max = parseInt(event.target.max.value);
+  let ciastka = parseFloat(event.target.cookies.value)  ;
+
+  arrayOfStores.push(new Store(storeLocation, min, max, ciastka));
+  console.log('arrayOfStores: ', arrayOfStores);
+  createOneStoreRow(arrayOfStores[5]);
+  //zmienić aby nie była konkretna liczba, tylko coś co się może zmieniać
+  form.reset();
+}
+
+//
+
+addEventListener('submit', formData);
+
 renderEveryHourTotal(arrayOfStores);
-
-
-addEventListener('submit')
-
 
 
 
