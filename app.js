@@ -1,29 +1,3 @@
-// let store = {
-//   location: '1st & Pike',
-//   minCustomer: 23,
-//   maxCustomer: 65,
-//   avgCookiePerCust: 6.3,
-//   kukiesHourlyArr: [],
-//   randomClientNum: function() {
-//     return Math.floor((Math.random() * Math.floor(this.maxCustomer - this.minCustomer)) + this.minCustomer);
-//   },
-//   kukiesPerHour: function() {
-//     let randomNum = this.randomClientNum();
-//     console.log(randomNum);
-//     return randomNum * Math.floor(this.avgCookiePerCust);
-//   },
-//   pushIntoArr: function() {
-//     let n = 1;
-//     while (n <= 15) {
-//       let kukiesOnHour = this.kukiesPerHour();
-//       this.kukiesHourlyArr.push(kukiesOnHour);
-//       n++;
-//     }
-//   }
-// };
-
-// store.pushIntoArr();
-
 function Store(adress, minCust, maxCust, avgCookies) {
   this.location = adress;
   this.minCustomer = minCust;
@@ -32,6 +6,8 @@ function Store(adress, minCust, maxCust, avgCookies) {
   this.kukiesHourlyArr = [];
   this.pushIntoArr();
 }
+
+const numberOfHoursInADay = 15;
 
 Store.prototype.randomClientNum = function() {
   return Math.floor((Math.random() * Math.floor(this.maxCustomer - this.minCustomer)) + this.minCustomer);
@@ -43,7 +19,7 @@ Store.prototype.kukiesPerHour = function() {
 },
 Store.prototype.pushIntoArr = function() {
   let n = 1;
-  while (n <= 15) {
+  while (n <= numberOfHoursInADay) {
     let kukiesOnHour = this.kukiesPerHour();
     this.kukiesHourlyArr.push(kukiesOnHour);
     n++;
@@ -67,13 +43,13 @@ console.log(arrayOfStores);
 let saleTable = document.getElementById('table');
 
 
-function createTableHeader(store){ 
+function createTableHeader(){ 
   let tHRow = document.createElement('tr');
   saleTable.appendChild(tHRow);
   let tHrData = document.createElement('th');
   tHrData.textContent = '';
   tHRow.appendChild(tHrData);
-  for (let i = 0; i < store.kukiesHourlyArr.length; i++) {
+  for (let i = 0; i < numberOfHoursInADay; i++) {
     if (i <= 6 ) {
       tHrData = document.createElement('th');
       tHrData.textContent = (i+6) + ' am';
@@ -136,7 +112,7 @@ function calculateAllHoursTotal(arr){
 function renderEveryHourTotal(arr){
   let arrOfTotals = calculateEveryHourTotal(arr);
   let sum = calculateAllHoursTotal(arrOfTotals);
-  let tBFooter = document.createElement('tr')
+  let tBFooter = document.createElement('tr');
   tBFooter.setAttribute('id','totals');
   saleTable.appendChild(tBFooter);
   let tBfootPusty = document.createElement('td');
@@ -152,16 +128,9 @@ function renderEveryHourTotal(arr){
   tBFooter.appendChild(tBfootSum);
 }
 
-createTableHeader(arrayOfStores[0]); // to nie powinien być store, header powinien być niezależny od stora;
-createOneStoreRow(arrayOfStores[0]);
-createOneStoreRow(arrayOfStores[1]);
-createOneStoreRow(arrayOfStores[2]);
-createOneStoreRow(arrayOfStores[3]);
-createOneStoreRow(arrayOfStores[4]);
-
-
 function removeHourlyTotalRow(){
-
+  let total = document.getElementById('totals');
+  total.remove();
 }
 
 let form = document.getElementById('formul');
@@ -175,60 +144,16 @@ function formData(event){
 
   arrayOfStores.push(new Store(storeLocation, min, max, ciastka));
   console.log('arrayOfStores: ', arrayOfStores);
-  createOneStoreRow(arrayOfStores[5]);
-  //zmienić aby nie była konkretna liczba, tylko coś co się może zmieniać
+  createOneStoreRow(arrayOfStores[arrayOfStores.length-1]);
+  removeHourlyTotalRow();
+  renderEveryHourTotal(arrayOfStores);
   form.reset();
 }
 
-//
-
 addEventListener('submit', formData);
 
+createTableHeader(); // to nie powinien być store, header powinien być niezależny od stora;
+for (let el of arrayOfStores){
+  createOneStoreRow(el);
+}
 renderEveryHourTotal(arrayOfStores);
-
-
-
-
-// function createListOfSalePredictions(store){ 
-//   let locationOfStore = document.createElement('li');
-//   locationOfStore.textContent = store.location;
-//   elementList.appendChild(locationOfStore);
-//   for (let i = 0; i < store.kukiesHourlyArr.length; i++) {
-//     console.log('dlugość: ' + store.kukiesHourlyArr.length);
-//     if (i <= 6 ) {
-//       let newListItem = document.createElement('li');
-//       newListItem.textContent = (i+6) + ' am ' + store.kukiesHourlyArr[i] + ' cookies';
-//       elementList.appendChild(newListItem);
-//     } else {
-//       let newListItem = document.createElement('li');
-//       newListItem.textContent = (i-6) + '  pm ' + store.kukiesHourlyArr[i] + ' cookies';
-//       elementList.appendChild(newListItem);
-//     }
-//   }
-// }  
-
-// function calculateCookiesTotal(arr){
-//   let total = 0;
-//   for (let i = 0; i < arr.length; i++) {
-//     total += arr[i];
-//   }
-//   return total;
-// }
-
-// function createListItemForCookiesTotal(num) {
-//   let cookiesTotal = document.createElement('li');
-//   cookiesTotal.textContent = 'Cookies total: ' + num;
-//   elementList.appendChild(cookiesTotal); 
-// }
-
-// createListOfSalePredictions(store);
-// createListItemForCookiesTotal(calculateCookiesTotal(store.kukiesHourlyArr));
-
-
-
-
-
-
-
-
- 
