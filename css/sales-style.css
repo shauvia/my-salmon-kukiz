@@ -1,6 +1,6 @@
 body {
   width: auto;
-  background-color: rgba(255, 233, 193, 0.712);
+  background-color: rgb(255, 249, 239);
   font-family: 'Belleza', sans-serif;
   color: rgb(155, 90, 6);
 }
@@ -73,8 +73,6 @@ tr:nth-child(odd) {
 
 td {
   vertical-align: middle;
-
-  /* border: 1px solid red; */
 }
 
 td:nth-child(1) {
@@ -90,9 +88,83 @@ th {
   background-color: rgb(146, 114, 71);
   color: rgb(250, 243, 234);
   vertical-align: middle;
-
-  /* border: 1px solid blue; */
 }
+
+form {
+  width: 70%;
+  height: 30vh;
+  margin: 3em auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas:
+    'location loc-input'
+    'min min-input'
+    'max max-input'
+    'cookies cook-input'
+    'button button';
+  column-gap: 7%;
+  row-gap: 3%;
+}
+
+form :nth-child(1) {
+  grid-area: location;
+}
+
+form :nth-child(2) {
+  grid-area: loc-input;
+}
+
+form :nth-child(3) {
+  grid-area: min;
+}
+
+form :nth-child(4) {
+  grid-area: min-input;
+}
+
+form :nth-child(5) {
+  grid-area: max;
+}
+
+form :nth-child(6) {
+  grid-area: max-input;
+}
+
+form :nth-child(7) {
+  grid-area: cookies;
+}
+
+form :nth-child(8) {
+  grid-area: cook-input;
+}
+
+form :nth-child(9) {
+  grid-area: button;
+}
+
+label {
+  /* border-bottom: 1px solid rgb(230, 202, 167); */
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#submitBtn {
+  background-color: rgb(192, 140, 72);
+  color: rgb(247, 241, 234);
+  width: 18em;
+  height: 5vh;
+  margin-top: 3vh;
+  text-decoration: none;
+  border: none;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
 
 footer address {
   border-top: 1px solid rgb(153, 117, 51);

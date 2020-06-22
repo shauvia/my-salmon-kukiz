@@ -29,7 +29,7 @@ Store.prototype.pushIntoArr = function() {
 let arrayOfStores = [];
 
 arrayOfStores.push(new Store('1st & Pike', 23, 65, 6.3));
-arrayOfStores.push(new Store('SeaTacAirport', 3, 24, 1.2)); 
+arrayOfStores.push(new Store('SeaTacAirport', 3, 24, 1.2));
 arrayOfStores.push(new Store('Seattle Center', 11, 38, 3.7));
 arrayOfStores.push(new Store('Capitol Hill', 20, 38, 2.3));
 arrayOfStores.push(new Store('Alki', 2, 16, 4.6));
@@ -38,12 +38,12 @@ console.log(arrayOfStores);
 
 
 
-// let elementList = document.getElementById('list'); 
+// let elementList = document.getElementById('list');
 
 let saleTable = document.getElementById('table');
 
 
-function createTableHeader(){ 
+function createTableHeader(){
   let tHRow = document.createElement('tr');
   saleTable.appendChild(tHRow);
   let tHrData = document.createElement('th');
@@ -140,19 +140,25 @@ function formData(event){
   let storeLocation = event.target.address.value;
   let min = parseInt(event.target.min.value);
   let max = parseInt(event.target.max.value);
-  let ciastka = parseFloat(event.target.cookies.value)  ;
+  let ciastka = parseFloat(event.target.cookies.value);
 
-  arrayOfStores.push(new Store(storeLocation, min, max, ciastka));
-  console.log('arrayOfStores: ', arrayOfStores);
-  createOneStoreRow(arrayOfStores[arrayOfStores.length-1]);
-  removeHourlyTotalRow();
-  renderEveryHourTotal(arrayOfStores);
-  form.reset();
+  if(isNaN(min) || isNaN(max) || isNaN(ciastka)) {
+    alert('Please, enter a number. Proszę wprowadź liczbę.');
+  } else if (storeLocation === ''){
+    alert('Please, enter a store location. Proszę wprowadź nazwę sklepu lub jego lokalizację.');
+  } else {
+    arrayOfStores.push(new Store(storeLocation, min, max, ciastka));
+    console.log('arrayOfStores: ', arrayOfStores);
+    createOneStoreRow(arrayOfStores[arrayOfStores.length-1]);
+    removeHourlyTotalRow();
+    renderEveryHourTotal(arrayOfStores);
+    form.reset();
+  }
 }
 
 addEventListener('submit', formData);
 
-createTableHeader(); // to nie powinien być store, header powinien być niezależny od stora;
+createTableHeader();
 for (let el of arrayOfStores){
   createOneStoreRow(el);
 }
